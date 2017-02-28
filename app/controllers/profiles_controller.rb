@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
     # Ensure that we have the user who is filling out form
     @user = User.find(params[:user_id])
     @profile = @user.build_profile(profile_params)
-    if @profile.save
+    if @profile.save!
       flash[:success] = "Profile Updated!"
       redirect_to user_path(id: params[:user_id])
     else
